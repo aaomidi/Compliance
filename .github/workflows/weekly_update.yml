@@ -28,7 +28,7 @@ jobs:
           ISSUE="${ISSUE//'%'/'%25'}"
           ISSUE="${ISSUE//$'\n'/'%0A'}"
           ISSUE="${ISSUE//$'\r'/'%0D'}"
-          echo ""::set-output name=ISSUE::$ISSUE"
+          echo "::set-output name=ISSUE::$ISSUE"
 
       - name: Print output
         run: 'echo ${{ steps.compliance.outputs.ISSUE}}'
