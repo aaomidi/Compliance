@@ -23,10 +23,10 @@ jobs:
 
       - name: Run Compliance Tracker
         id: compliance
-        run: echo "::set-output name=issue::$(go run cmd/compliance-tracker/main.go)"
+        run: ISSUE=$(go run cmd/compliance-tracker/main.go) && echo ::set-output name=ISSUE::$ISSUE
 
       - name: Print output
-        run: 'echo ${{ steps.compliance.outputs.issue}}'
+        run: 'echo ${{ steps.compliance.outputs.ISSUE}}'
       
       - name: Create issue 
         uses: imjohnbo/issue-bot@v3.0
