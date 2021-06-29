@@ -28,4 +28,11 @@ jobs:
       - name: Print output
         run: 'echo ${{ steps.compliance.outputs.issue}}'
       
-
+      - name: Create issue 
+        uses: imjohnbo/issue-bot@v3.0
+        with:
+          labels: "weekly"
+          title: "Weekly compliance tracker"
+          body: ${{ steps.compliance.outputs.issue }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
