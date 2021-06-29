@@ -2,6 +2,8 @@ name: weekly-compliance
 on:
   schedule:
     - cron: '0 15 * * 1'
+  workflow_dispatch:
+    
 
 jobs:
   issue_maker:
