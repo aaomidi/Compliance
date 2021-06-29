@@ -1,0 +1,27 @@
+name: weekly-compliance
+on:
+  schedule:
+    - '0 15 * * 1'
+
+jobs:
+  issue_maker:
+    name: Issue maker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up go
+        uses: actions/setup-go@v1
+        with:
+          stable: 'true'
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          repository: letsencrypt/sre-tools
+          ref: compliance-tracker
+
+      - name: Run Compliance Tracker
+        id: compliance
+        working-directory: 'cmd/compliance-tracker'
+        run: 'echo "::set-output name=issue::$(go run main.go)"'
+
+      - name: Print output
+        run: 'echo ${{ steps.compliance.outputs.issue}}'
