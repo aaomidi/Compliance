@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Compliance Tracker
         id: compliance
-        run: echo "##[set-output name=issue;]$(go run cmd/compliance-tracker/main.go)"
+        run: echo "::set-output name=issue::$(go run cmd/compliance-tracker/main.go)"
 
       - name: Print output
         run: 'echo ${{ steps.compliance.outputs.issue}}'
