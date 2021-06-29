@@ -1,7 +1,7 @@
 name: weekly-compliance
 on:
   schedule:
-    - '0 15 * * 1'
+    - cron: '0 15 * * 1'
 
 jobs:
   issue_maker:
