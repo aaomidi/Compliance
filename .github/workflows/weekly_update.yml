@@ -29,9 +29,6 @@ jobs:
           ISSUE="${ISSUE//$'\n'/'%0A'}"
           ISSUE="${ISSUE//$'\r'/'%0D'}"
           echo "::set-output name=ISSUE::$ISSUE"
-
-      # - name: Print output
-      #   run: 'echo ${{ steps.compliance.outputs.ISSUE}}'
       
       - name: Create issue 
         uses: imjohnbo/issue-bot@v3.0
